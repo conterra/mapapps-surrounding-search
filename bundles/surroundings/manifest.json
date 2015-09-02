@@ -1,0 +1,125 @@
+{
+    "Bundle-SymbolicName": "surroundings",
+    "Bundle-Version": "1.1.0",
+    "Bundle-Name": "${bundleName}",
+    "Bundle-Description": "Search stores for surrounding features",
+    "Bundle-Vendor": "con terra GmbH",
+    "Bundle-Localization": ["bundle"],
+    "Config-Bundle-Location": "/config",
+    "Require-Bundle": [
+        {
+            "name": "agssearch"
+        },{
+            "name": "map"
+        },{
+            "name": "resultcenter"
+        }
+        ],
+        "layout-widgets": [{
+        "widgetRole": "surroundings",
+                "window": {
+                "name": "mainWindow",
+                "title": "${SrWidget.title}",
+                        "marginBox": {
+                            "w": 290,
+                            "h": 370,
+                            "t": 380,
+                            "l": 20
+                        },
+                        "closable": true,
+                        "minimizeOnClose": true,
+                        "resizable": true,
+                        "draggable": true,
+                        "windowClass": "ctWindowEffect",
+                        "dockTool": "surroundingsToggleTool"
+                }
+        }],
+    "Components": [
+        {
+            "name": "GraphicsHandler",
+            "provides": ["surroundings.GraphicsHandler"],
+            "propertiesConstructor": true,
+            "properties": {
+                "graphicLayerId": "graphics"
+            },
+            "references": [
+                {
+                    "name": "_mapModel",
+                    "providing": "ct.mapping.map.MapModel"
+                }
+            ]
+        },
+        {
+            "name": "SrController",
+            "provides": ["surroundings.SrController", "dijit.Widget"],
+            "propertiesConstructor": true,
+            "instanceFactory": true,
+            "properties": {
+                "widgetRole" : "surroundings",
+                "storeIds": [],
+                "distance": {
+                    "minimum": 0,
+                    "maximum": 5000,
+                    "interval": 50,
+                    "unit": "METERS" //esri unit
+                },
+                "time": {
+                    "enabled": true,
+                    "minimum": 0,
+                    "maximum": 30,
+                    "interval": 1
+                },
+                "geoprocessorUrl": "http://logistics.arcgis.com/arcgis/rest/services/World/ServiceAreas/GPServer/GenerateServiceAreas"
+            },
+            "references": [{
+                    "name": "_windowManager",
+                    "providing": "ct.framework.api.WindowManager"
+                },
+                {
+                    "name": "_mapState",
+                    "providing": "ct.mapping.map.MapState"
+                },
+                {
+                    "name": "_coordinateTransformer",
+                    "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
+                },
+                {
+                    "name": "_logService",
+                    "providing": "ct.framework.api.LogService"
+                },
+                {
+                    "name": "_graphicsHandler",
+                    "providing": "surroundings.GraphicsHandler"
+                },
+                {
+                    "name": "_dataModel",
+                    "providing": "ct.resultcenter.DataModel"
+                },
+                {
+                    "name": "_eventService",
+                    "providing": "ct.framework.api.EventService"
+                },
+                {
+                    "name": "surroundingStore",
+                    "providing": "ct.api.Store",
+                    "cardinality": "1..n",
+                    "filter": "(useIn=omnisearch)"
+                }
+            ]
+        },
+        {
+            "name": "surroundingsToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "surroundingsToggleTool",
+                "toolRole": "toolset",
+                "title": "${toggleTool.title}",
+                "tooltip": "${toggleTool.tooltip}",
+                "togglable": true,
+                "iconClass": "icon-radio-selected"
+            }
+        }
+    ]
+}

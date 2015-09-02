@@ -1,0 +1,31 @@
+<div>
+    ${SrWidget.storeSelector}
+    <br>
+    <br>
+    <select data-dojo-attach-point="storeSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:onCategory"></select>
+    <hr>
+    <p>${SrWidget.selectionTool.heading}</p>
+    
+    <input type="radio" data-dojo-type="dijit/form/RadioButton" name="range" data-dojo-attach-point="distOptTwo" value="distance" data-dojo-attach-event="onClick:onDistance" checked/> <label for="distOptTwo">${SrWidget.selectionTool.distanceTool}</label>
+    <div data-dojo-attach-point="distanceRuleLabels"></div><br>
+    <div data-dojo-attach-point="distanceSlider" data-dojo-type="dojox.form.HorizontalRangeSlider" data-dojo-props="showButtons:false"></div><br>
+    ${SrWidget.between}
+    <input style="width: 5em;" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="distFromText"/>
+    <span data-dojo-attach-point="distFromUnit"></span>
+    ${SrWidget.and}
+    <input style="width: 5em;" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="distToText"/>
+    <span data-dojo-attach-point="distToUnit"></span>
+    .
+    <br><br>
+    
+    <input type="radio" data-dojo-type="dijit/form/RadioButton" name="range" data-dojo-attach-point="distOptOne" value="time" data-dojo-attach-event="onClick:onDrivetime"/> <label for="distOptOne">${SrWidget.selectionTool.travelTimeTool}</label>
+    <div data-dojo-attach-point="timeRuleLabels"></div><br>
+    <input type="range" data-dojo-type="dijit.form.HorizontalSlider" data-dojo-attach-point="timeSlider" data-dojo-props="showButtons: false, disabled:true"><br>
+    <input style="width: 3em;" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="timeText" data-dojo-props="disabled:true"/>
+    ${SrWidget.minutes}
+    <br><br>
+
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onChooseStart"  data-dojo-attach-point="chooseStartButton">${SrWidget.chooseStart}</button>
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onReset" data-dojo-attach-point="resetButton">${SrWidget.resetButton}</button>
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onSearch"  data-dojo-attach-point="searchButton">${SrWidget.searchButton}</button>
+</div>

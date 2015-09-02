@@ -1,0 +1,23 @@
+<div>
+    ${SrWidget.storeSelector}
+    <br>
+    <br>
+    <select data-dojo-attach-point="storeSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:onCategory"></select>
+    <hr>
+    <p>${SrWidget.selectionTool.heading}</p>
+    
+    <div data-dojo-attach-point="distanceRuleLabels"></div><br>
+    <div data-dojo-attach-point="distanceSlider" data-dojo-type="dojox.form.HorizontalRangeSlider" data-dojo-props="showButtons:false"></div><br>
+    ${SrWidget.between}
+    <input style="width: 5em;" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="distFromText"/>
+    <span data-dojo-attach-point="distFromUnit"></span>
+    ${SrWidget.and}
+    <input style="width: 5em;" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="distToText"/>
+    <span data-dojo-attach-point="distToUnit"></span>
+    .
+    <br><br>
+
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onChooseStart"  data-dojo-attach-point="chooseStartButton">${SrWidget.chooseStart}</button>
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onReset" data-dojo-attach-point="resetButton">${SrWidget.resetButton}</button>
+    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:onSearch"  data-dojo-attach-point="searchButton">${SrWidget.searchButton}</button>
+</div>
