@@ -5,6 +5,9 @@ Additionally, if ArcGIS Online credentials are available, the radius can be defi
 
 The bundle has also it's own live-configuration so that setting it up should go with ease. 
 
+### Sample App ###
+http://www.mapapps.de/mapapps/resources/apps/downloads_surroundings/index.html
+
 Anleitung (DE)
 --------------
 Das Surroundings-Bundle ermöglicht die Selektion von Features innerhalb eines Kreises mit definierten Radius und Ausgangspunkt. Dabei wird der jeweils ausgesuchte Store unabhängig von anderen Attributen räumlich gefiltert und die Ergebnisse im ResultCenter dargestellt.
