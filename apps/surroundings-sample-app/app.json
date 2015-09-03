@@ -1,8 +1,24 @@
 {
     "load": {
-        "bundleLocations": ["localbundles", "bundles"],
-        "allowedBundles": ["wizard","notifier", "contentviewer", "featureinfo", "agssearch", "mapflow", "surroundings", "system", "splashscreen", "map", "themes", "templates", "templatelayout", "windowmanager", "toolset", "toolrules", "basemaptoggler"],
-        "skipBundles": [],
+        "allowedBundles": [
+            "wizard",
+            "notifier",
+            "contentviewer",
+            "featureinfo",
+            "agssearch",
+            "mapflow",
+            "surroundings",
+            "system",
+            "splashscreen",
+            "map",
+            "themes",
+            "templates",
+            "templatelayout",
+            "windowmanager",
+            "toolset",
+            "toolrules",
+            "basemaptoggler"
+        ],
         "require": ["${app}.app"],
         "i18n": ["bundle"]
     },
@@ -16,7 +32,7 @@
                     "omniSearchSearchAttr": "cc",
                     "idProperty": "OBJECTID",
                     "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/5",
-                    "useIn": ["selection"],
+                    "useIn": ["selection", "omnisearch"],
                     "filterOptions": {
                         "suggestContains": false
                     },
@@ -59,75 +75,8 @@
                     "omniSearchDefaultLabel": "Enter search string...",
                     "fetchIdProperty": true,
                     "id": "germany_camping"
-                }]
-        },
-        "surroundings":{
-            "SrController":{
-                "storeIds": [
-                    "germany_camping",
-                    "germany_populated",
-                    "bathingwater"
-                ],
-                "distance": {
-                    "minimum": 0,
-                    "maximum": 10000,
-                    "interval": 100,
-                    "unit": "METERS"
-                },
-                "time": {
-                    "enabled": true,
-                    "minimum": 0,
-                    "maximum": 60,
-                    "interval": 2
-                },
-                "geoprocessorUrl": "http://logistics.arcgis.com/arcgis/rest/services/World/ServiceAreas/GPServer/GenerateServiceAreas"
-            }
-        },
-        "templates": {
-            "TemplateSelector": {
-                "componentEnabled": false
-            },
-            "TemplateModel": {
-                "_selectedTemplate": "seasons",
-                "_templates": [
-                    {
-                        "name": "seasons",
-                        "widgets": [{
-                                "role": "surroundings",
-                                "window": {
-                                    "marginBox": {
-                                        "w": 290,
-                                        "h": 380,
-                                        "t": 110,
-                                        "l": 20
-                                    }
-                                }
-                            }]
-
-                    }
-                ]
-            }
-        },
-        "toolset": {
-            "ToolsetManager": {
-                "toolsets": [
-                    {
-                        "id": "position_tools",
-                        "title": "",
-                        "tools": ["surroundingsToggleTool"],
-                        "container": "map",
-                        "cssClass":"noTitleBarAndWindowTools",
-                        "templates": {
-                            "*": {
-                                "position": {
-                                    "rel_t": 20,
-                                    "rel_l": 20
-                                }
-                            }
-                        }
-                    }]
-            }
-
+                }
+            ]
         },
         "map": {
             "MapState": {
@@ -160,120 +109,34 @@
                                     "title": "${map.operational.bathingwater.title}",
                                     "enabled": false,
                                     "service": "bathingwater",
-                                    "category": {
-                                        "title": "${map.operational.bathingwater.title}",
-                                        "description": "Map is showing bathing monitoring locations and associated attributive data from 2002 till 2012 in more detailed scales and aggregated data by countries. For the scales 1:5.000.001 and less detailed, data are aggregated by country. In such case, stacked bars show percentage of bathing water quality for coastal and inland waters together. Number of bathing waters within certain category is seen in pop up window which can be turned on with a click on single country. For the scale range 1:5 000.000 till1:700,001, individual bathing water sites (points) are visible instead of classified stacked charts and are coloured according the classification of bathing water quality. Symbol size depends on the map scale (in more detailed map scales symbols are bigger). For the scale 1:700,000 and more detailed, symbol of bather in a square appears instead of points. Symbol size depends on the map scale.",
-                                        "imgUrl": "${app}:images/bathingCover.png"
-                                    },
-                                    "children": [
-                                        {
-                                            "layer": "0",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "1",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "2",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "3",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "4",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "5",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "6",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "7",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "8",
-                                            "enabled": true
-                                        }],
-                                    "opacity": 1
+                                    "layers": ["*"]
                                 },
                                 {
                                     "id": "germany_populated",
                                     "title": "Populated Places in Germany(OSM)",
                                     "enabled": false,
                                     "service": "germany_populated",
-                                    "category": {
-                                        "imgUrl": "${app}:images/defaultCover.png"
-                                    },
-                                    "children": [
-                                        {
-                                            "layer": "0",
-                                            "enabled": true
-                                        }
-                                    ]
+                                    "layers": ["*"]
                                 },
                                 {
                                     "id": "germany_camping",
                                     "title": "Campingsites Places in Germany(OSM)",
                                     "enabled": false,
                                     "service": "germany_camping",
-                                    "category": {
-                                        "imgUrl": "${app}:images/defaultCover.png"
-                                    },
-                                    "children": [
-                                        {
-                                            "layer": "0",
-                                            "enabled": true
-                                        }
-                                    ]
+                                    "layers": ["*"]
                                 }
                             ],
                             "baseLayer": [{
                                     "id": "background1",
                                     "title": "${map.base.aerial.title}",
                                     "enabled": false,
-                                    "service": "worldimage",
-                                    "children": [{
-                                            "layer": "0",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "1",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "2",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "3",
-                                            "enabled": true
-                                        }]
+                                    "service": "worldimage"
                                 },
                                 {
                                     "id": "background2",
                                     "title": "${map.base.topo.title}",
                                     "enabled": true,
-                                    "service": "worldtopo",
-                                    "children": [{
-                                            "layer": "0",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "5",
-                                            "enabled": true
-                                        },
-                                        {
-                                            "layer": "10",
-                                            "enabled": true
-                                        }]
+                                    "service": "worldtopo"
                                 }]
                         }
                     ]
@@ -281,205 +144,188 @@
             },
             "MappingResourceRegistryFactory": {
                 "_knownServices": {
-                "services": [{
-                        "id": "worldimage",
-                        "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-                        "type": "AGS_TILED",
-                        "title": "${map.base.aerial.title}",
-                        "description": "${map.base.aerial.description}",
-                        "layers": [{
-                                "id": "0",
-                                "title": "World Imagery"
-                            },
-                            {
-                                "id": "1",
-                                "title": "Low Resolution 15m Imagery"
-                            },
-                            {
-                                "id": "2",
-                                "title": "High Resolution 60cm Imagery"
-                            },
-                            {
-                                "id": "3",
-                                "title": "High Resolution 30cm Imagery"
-                            }]
-                    },
+                    "services": [{
+                            "id": "worldimage",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "${map.base.aerial.title}",
+                            "description": "${map.base.aerial.description}"
+                        },
+                        {
+                            "id": "worldtopo",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "${map.base.topo.title}",
+                            "description": "${map.base.topo.description}"
+                        },
+                        {
+                            "id": "bathingwater",
+                            "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer",
+                            "type": "AGS_DYNAMIC",
+                            "title": "BathingWater",
+                            "description": "Map is showing bathing monitoring locations and associated attributive data from 2002 till 2012 in more detailed scales and aggregated data by countries. For the scales 1:5.000.001 and less detailed, data are aggregated by country. In such case, stacked bars show percentage of bathing water quality for coastal and inland waters together. Number of bathing waters within certain category is seen in pop up window which can be turned on with a click on single country. For the scale range 1:5 000.000 till1:700,001, individual bathing water sites (points) are visible instead of classified stacked charts and are coloured according the classification of bathing water quality. Symbol size depends on the map scale (in more detailed map scales symbols are bigger). For the scale 1:700,000 and more detailed, symbol of bather in a square appears instead of points. Symbol size depends on the map scale.",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 30000001,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "1",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 5000001,
+                                    "minScale": 30000000,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "2",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 3000001,
+                                    "minScale": 5000000,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "3",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 700001,
+                                    "minScale": 3000000,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "4",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 500001,
+                                    "minScale": 700000,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "5",
+                                    "title": "Bathing water quality",
+                                    "maxScale": 200001,
+                                    "minScale": 500000,
+                                    "enabled": true
+                                },
+                                {
+                                    "id": "6",
+                                    "title": "Bathing water quality",
+                                    "minScale": 200000,
+                                    "enabled": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "germany_populated",
+                            "url": "http://services.conterra.de/arcgis/rest/services/common/osm_population/MapServer",
+                            "type": "AGS_DYNAMIC",
+                            "title": "Populated Places in Germany(OSM)",
+                            "description": "Populated Places in Germany",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "population"
+
+                                }
+                            ],
+                            "options": {
+                                "outFields": ["geometry"]
+                            }
+                        },
+                        {
+                            "id": "germany_camping",
+                            "url": "http://services.conterra.de/arcgis/rest/services/common/osm_camping/MapServer",
+                            "type": "AGS_DYNAMIC",
+                            "title": "Campingsites in Germany(OSM)",
+                            "description": "Campingsites in Germany",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": ""
+                                }
+                            ],
+                            "options": {
+                                "outFields": ["*"]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "surroundings": {
+            "SrController": {
+                "storeIds": [
+                    "germany_camping",
+                    "germany_populated",
+                    "bathingwater"
+                ],
+                "distance": {
+                    "minimum": 0,
+                    "maximum": 10000,
+                    "interval": 100,
+                    "unit": "METERS"
+                },
+                "time": {
+                    "enabled": true,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "interval": 2
+                },
+                "geoprocessorUrl": "http://logistics.arcgis.com/arcgis/rest/services/World/ServiceAreas/GPServer/GenerateServiceAreas"
+            }
+        },
+        "templates": {
+            "TemplateSelector": {
+                "componentEnabled": false
+            },
+            "TemplateModel": {
+                "_selectedTemplate": "seasons",
+                "_templates": [
                     {
-                        "id": "worldtopo",
-                        "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-                        "type": "AGS_TILED",
-                        "title": "${map.base.topo.title}",
-                        "description": "${map.base.topo.description}",
-                        "layers": [{
-                                "id": "0",
-                                "title": "Topographic Info"
-                            },
+                        "name": "seasons",
+                        "widgets": [
                             {
-                                "id": "1",
-                                "title": "Elevation (m)",
-                                "parentId": "0"
-                            },
-                            {
-                                "id": "2",
-                                "title": "Elevation (ft)",
-                                "parentId": "0"
-                            },
-                            {
-                                "id": "3",
-                                "title": "Slope",
-                                "parentId": "0"
-                            },
-                            {
-                                "id": "4",
-                                "title": "Aspect",
-                                "parentId": "0"
-                            },
-                            {
-                                "id": "5",
-                                "title": "Places Info"
-                            },
-                            {
-                                "id": "6",
-                                "title": "Place Names (Country Level)",
-                                "parentId": "5",
-                                "maxScale": 80000000
-                            },
-                            {
-                                "id": "7",
-                                "title": "Place Names (State Level)",
-                                "parentId": "5",
-                                "maxScale": 80000001
-                            },
-                            {
-                                "id": "8",
-                                "title": "Place Names (County Level)",
-                                "parentId": "5",
-                                "maxScale": 1500001
-                            },
-                            {
-                                "id": "9",
-                                "title": "Place Names (City Level)",
-                                "parentId": "5",
-                                "maxScale": 399999
-                            },
-                            {
-                                "id": "10",
-                                "title": "Citations"
-                            }]
-                    },
-                    {
-                        "id": "streets",
-                        "description": "${map.base.streets.description}",
-                        "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-                        "type": "AGS_TILED",
-                        "title": "${map.base.streets.title}",
-                        "layers": [{
-                                "id": "0",
-                                "title": "${map.base.streets.title}"
-                            }]
-                    },
-                    {
-                        "id": "bathingwater",
-                        "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer",
-                        "type": "AGS_DYNAMIC",
-                        "title": "BathingWater",
-                        "description": "Map is showing bathing monitoring locations and associated attributive data from 2002 till 2012 in more detailed scales and aggregated data by countries. For the scales 1:5.000.001 and less detailed, data are aggregated by country. In such case, stacked bars show percentage of bathing water quality for coastal and inland waters together. Number of bathing waters within certain category is seen in pop up window which can be turned on with a click on single country. For the scale range 1:5 000.000 till1:700,001, individual bathing water sites (points) are visible instead of classified stacked charts and are coloured according the classification of bathing water quality. Symbol size depends on the map scale (in more detailed map scales symbols are bigger). For the scale 1:700,000 and more detailed, symbol of bather in a square appears instead of points. Symbol size depends on the map scale.",
-                        "layers": [
-                            {
-                                "id": "0",
-                                "title": "Bathing water monitoring by country",
-                                "queryable": false
-                            },
-                            {
-                                "id": "1",
-                                "title": "Bathing water quality",
-                                "parentId": "0",
-                                "maxScale": 30000001
-                            },
-                            {
-                                "id": "2",
-                                "title": "Bathing water quality",
-                                "parentId": "0",
-                                "maxScale": 5000001,
-                                "minScale": 30000000
-                            },
-                            {
-                                "id": "3",
-                                "title": "Bathing water monitoring by location",
-                                "queryable": false
-                            },
-                            {
-                                "id": "4",
-                                "title": "Bathing water quality",
-                                "parentId": "3",
-                                "maxScale": 3000001,
-                                "minScale": 5000000
-                            },
-                            {
-                                "id": "5",
-                                "title": "Bathing water quality",
-                                "parentId": "3",
-                                "maxScale": 700001,
-                                "minScale": 3000000
-                            },
-                            {
-                                "id": "6",
-                                "title": "Bathing water quality",
-                                "parentId": "3",
-                                "maxScale": 500001,
-                                "minScale": 700000
-                            },
-                            {
-                                "id": "7",
-                                "title": "Bathing water quality",
-                                "parentId": "3",
-                                "maxScale": 200001,
-                                "minScale": 500000
-                            },
-                            {
-                                "id": "8",
-                                "title": "Bathing water quality",
-                                "parentId": "3",
-                                "minScale": 200000
+                                "role": "surroundings",
+                                "window": {
+                                    "marginBox": {
+                                        "w": 290,
+                                        "h": 380,
+                                        "t": 110,
+                                        "l": 20
+                                    }
+                                }
                             }
                         ]
-                    },
+                    }
+                ]
+            }
+        },
+        "toolrules": {
+            "ToolActiveStateManager": {
+                "activateOnStartToolIds": [
+                    "surroundingsToggleTool"
+                ]
+            }
+        },
+        "toolset": {
+            "ToolsetManager": {
+                "toolsets": [
                     {
-                        "id": "germany_populated",
-                        "url": "http://services.conterra.de/arcgis/rest/services/common/osm_population/MapServer",
-                        "type": "AGS_DYNAMIC",
-                        "title": "Populated Places in Germany(OSM)",
-                        "description": "Populated Places in Germany",
-                        "layers": [
-                            {
-                                "id": "0",
-                                "title": "population"
-
+                        "id": "position_tools",
+                        "title": "",
+                        "tools": ["surroundingsToggleTool"],
+                        "container": "map",
+                        "cssClass": "noTitleBarAndWindowTools",
+                        "templates": {
+                            "*": {
+                                "position": {
+                                    "rel_t": 20,
+                                    "rel_l": 20
+                                }
                             }
-                        ],
-                        "options": {
-                            "outFields": ["geometry"]
-                        }
-                    },
-                    {
-                        "id": "germany_camping",
-                        "url": "http://services.conterra.de/arcgis/rest/services/common/osm_camping/MapServer",
-                        "type": "AGS_DYNAMIC",
-                        "title": "Campingsites in Germany(OSM)",
-                        "description": "Campingsites in Germany",
-                        "layers": [
-                            {
-                                "id": "0",
-                                "title": ""
-                            }
-                        ],
-                        "options": {
-                            "outFields": ["*"]
                         }
                     }
                 ]
             }
-        }
         }
     }
 }

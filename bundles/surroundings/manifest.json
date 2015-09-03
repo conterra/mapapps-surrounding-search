@@ -4,36 +4,41 @@
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "Search stores for surrounding features",
     "Bundle-Vendor": "con terra GmbH",
+    "Product-Name": "map.apps Developer Network",
     "Bundle-Localization": ["bundle"],
     "Config-Bundle-Location": "/config",
     "Require-Bundle": [
         {
             "name": "agssearch"
-        },{
+        },
+        {
             "name": "map"
-        },{
+        },
+        {
             "name": "resultcenter"
         }
-        ],
-        "layout-widgets": [{
-        "widgetRole": "surroundings",
-                "window": {
+    ],
+    "layout-widgets": [
+        {
+            "widgetRole": "surroundings",
+            "window": {
                 "name": "mainWindow",
                 "title": "${SrWidget.title}",
-                        "marginBox": {
-                            "w": 290,
-                            "h": 370,
-                            "t": 380,
-                            "l": 20
-                        },
-                        "closable": true,
-                        "minimizeOnClose": true,
-                        "resizable": true,
-                        "draggable": true,
-                        "windowClass": "ctWindowEffect",
-                        "dockTool": "surroundingsToggleTool"
-                }
-        }],
+                "marginBox": {
+                    "w": 290,
+                    "h": 370,
+                    "t": 380,
+                    "l": 20
+                },
+                "closable": true,
+                "minimizeOnClose": true,
+                "resizable": true,
+                "draggable": true,
+                "windowClass": "ctWindowEffect",
+                "dockTool": "surroundingsToggleTool"
+            }
+        }
+    ],
     "Components": [
         {
             "name": "GraphicsHandler",
@@ -55,13 +60,13 @@
             "propertiesConstructor": true,
             "instanceFactory": true,
             "properties": {
-                "widgetRole" : "surroundings",
+                "widgetRole": "surroundings",
                 "storeIds": [],
                 "distance": {
                     "minimum": 0,
                     "maximum": 5000,
                     "interval": 50,
-                    "unit": "METERS" //esri unit
+                    "unit": "METERS"
                 },
                 "time": {
                     "enabled": true,
