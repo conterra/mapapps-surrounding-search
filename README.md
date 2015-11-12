@@ -16,7 +16,7 @@ Zusätzlich erlaubt das Bundle die räumliche Selektion von Feature durch die Be
 
 Neben der Auswahl des Ausgangspunktes durch einen Klick auf die Karte kann auch der aktuelle Standort oder das Ergebnis einer Suche (Adresse oder Koordinaten) benutzt werden.
 
-Jegliche Selektionen durch das Bundle werden ausschließlich auf den gewählten Store durchgeführt. Dabei ist nicht relevant ob der Store als Layer zur Verfügung steht und ob ggf. dieser oder andere Layer aktiviert werden.
+Jegliche Selektionen durch das Bundle werden ausschließlich auf den gewählten Store durchgeführt. Dabei ist nicht relevant ob der Store als Layer zur Verfügung steht und ob ggf. dieser oder andere Layer aktiviert werden. Zu beachten ist, dass für den gewünschten Store die Eigenschaft "useIn" der Wert "selection" vergeben wurde.
 
 ![Umkreissuche](http://developernetwork.conterra.de/en/system/files/images/surrounding1.png)
 
@@ -25,7 +25,7 @@ Das Bundle bietet die Möglichkeit die einzelnen Parameter, Minimum- und Maximum
 ![Umkreissuche2](http://developernetwork.conterra.de/en/system/files/images/surrounding2.png)
 
 ###Übersicht der Konfigurierbaren Parameter###
-AGS-Store-IDs: Dieses Textfeld enthält ein Array der durchsuchbaren Stores durch das Bundle (benötigt wird die Store-ID, Layer-IDs können nicht verwendet werden). Die Reihenfolge entspricht somit auch der der Dropdown im Bundle-Widget. Store-IDs werden automatisch erzeugt, wenn in der Live-Konfiguration ein Suchthema angelegt wird (beispielsweise auf einen Feature-Service). Anschließend können die Store-IDs über die app.json im Bereich bundles à agssearch à AGSStore für das jeweilige Suchthema (AGSStore) hinter dem Attribut „id“ (letzter Eintrag) eingesehen werden:
+AGS-Store-IDs: Dieses Textfeld enthält ein Array der durchsuchbaren Stores durch das Bundle (benötigt wird die Store-ID, Layer-IDs können nicht verwendet werden). Die Reihenfolge entspricht somit auch der der Dropdown im Bundle-Widget. Store-IDs werden automatisch erzeugt, wenn in der Live-Konfiguration ein Suchthema angelegt wird (beispielsweise auf einen Feature-Service). Anschließend können die Store-IDs über die app.json im Bereich bundles -> agssearch -> AGSStore für das jeweilige Suchthema (AGSStore) hinter dem Attribut „id“ (letzter Eintrag) eingesehen werden:
 ![Umkreissuche3](http://developernetwork.conterra.de/en/system/files/images/surrounding3.png)
 
 Das Surroundings-Bundle reagiert auch auf Änderungen während der laufzeit. Sollten die gelisteten Stores in der Live-Konfigurationen hinzugefügt oder entfernt werden, so wird diese Änderung auch im Surroundings-Widget wiedergegeben. Auch die mit map.apps 3.2 unterstützte automatische Registrierung eines ArcGIS-Server Stores wird unterstützt.
