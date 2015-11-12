@@ -21,7 +21,8 @@
             "windowmanager",
             "toolset",
             "toolrules",
-            "basemaptoggler"
+            "basemaptoggler",
+		  	"resultcenter"
         ],
         "require": ["${app}.app"],
         "i18n": ["bundle"]
@@ -36,7 +37,7 @@
                     "omniSearchSearchAttr": "cc",
                     "idProperty": "OBJECTID",
                     "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/5",
-                    "useIn": ["selection", "omnisearch"],
+                    "useIn": ["selection"],
                     "filterOptions": {
                         "suggestContains": false
                     },
@@ -53,7 +54,7 @@
                     "omniSearchSearchAttr": "name",
                     "idProperty": "OBJECTID",
                     "url": "http://services.conterra.de/arcgis/rest/services/common/osm_population/MapServer/0",
-                    "useIn": ["selection", "omnisearch"],
+                    "useIn": ["selection"],
                     "filterOptions": {
                         "suggestContains": false
                     },
@@ -70,7 +71,7 @@
                     "omniSearchSearchAttr": "name",
                     "idProperty": "OBJECTID",
                     "url": "http://services.conterra.de/arcgis/rest/services/common/osm_camping/MapServer/0",
-                    "useIn": ["selection", "omnisearch"],
+                    "useIn": ["selection"],
                     "filterOptions": {
                         "suggestContains": false
                     },

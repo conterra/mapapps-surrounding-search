@@ -108,7 +108,7 @@
                     "name": "surroundingStore",
                     "providing": "ct.api.Store",
                     "cardinality": "1..n",
-                    "filter": "(useIn=omnisearch)"
+                    "filter": "(useIn=selection)"
                 }
             ]
         },
