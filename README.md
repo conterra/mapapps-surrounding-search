@@ -1,3 +1,5 @@
+:heavy_exclamation_mark: This bundle is no longer maintained. You may use https://github.com/conterra/mapapps-enhanced-selection instead, which extends functionality of this bundle. :heavy_exclamation_mark: 
+
 # Surrounding Search Bundle
 The surroundings bundle enables the user to search for features on predefined stores. In contrast to omnisearch the surroundingssearch is not based on a string. The user can define a location with a click on the map and a radius around this location. The result will contain all features from the selected store within the defined radius around the location set by the user.
 
@@ -5,8 +7,6 @@ Additionally, if ArcGIS Online credentials are available, the radius can be defi
 
 The bundle has also it's own live-configuration so that setting it up should go with ease. 
 
-### Sample App ###
-http://www.mapapps.de/mapapps/resources/apps/downloads_surroundings/index.html
 
 Anleitung (DE)
 --------------
