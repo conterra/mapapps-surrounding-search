@@ -9,11 +9,11 @@
     
     "Require-Bundle": [{
         "name": "dataform",
-        "version": "[3.0.0,)",
+        "version": "^3.0.0",
         "policy" : "optional"
     },{
         "name": "wizard",
-        "version": "[3.0.0,)"
+        "version": "^3.0.0"
     }],
 
     "Components": [
