@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "surroundings-config",
-    "Bundle-Version": "1.0",
+    "Bundle-Version": "1.2.1-SNAPSHOT",
 
     "Bundle-Name": "Surroundings config",
     "Bundle-Description": "Configuration bundle for Surroundings",

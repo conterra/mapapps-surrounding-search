@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "surroundings",
-    "Bundle-Version": "1.1.0",
+    "Bundle-Version": "1.2.1-SNAPSHOT",
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "Search stores for surrounding features",
     "Bundle-Vendor": "con terra GmbH",
